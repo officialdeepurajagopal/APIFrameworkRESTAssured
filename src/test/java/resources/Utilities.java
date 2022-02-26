@@ -11,12 +11,14 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 public class Utilities {
 	public static RequestSpecification reqSpec;
 	ResponseSpecification respSpec;
+	JsonPath js;
 	
 	public RequestSpecification requestSpecification() throws IOException {
 		
@@ -43,6 +45,12 @@ public class Utilities {
 		FileInputStream inpFile = new FileInputStream("/Users/deepurajagopal/eclipse-workspace/APIFramework/src/test/java/resources/global.properties");
 		prop.load(inpFile);
 		return prop.getProperty(key);
+	}
+	
+	public String responseStringFromJson(String res, String key) {
+		
+		js = new JsonPath(res);
+		return js.get(key).toString();
 	}
 
 }

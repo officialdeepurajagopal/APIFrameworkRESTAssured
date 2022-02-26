@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.AddPlace;
+import pojo.DeletePlace;
 import pojo.Location;
 
 public class TestDataBuild {
@@ -31,6 +32,11 @@ public class TestDataBuild {
 		p.setLocation(loc);
 		
 		return p;
+	}
+	
+public String deletePlacePayLoad(String placeid) {
+		
+		return "{\"place_id\":\""+placeid+"\"}";
 	}
 
 }
